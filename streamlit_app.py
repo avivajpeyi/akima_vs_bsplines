@@ -9,7 +9,6 @@ from streamlit_image_coordinates import streamlit_image_coordinates
 # Configure Streamlit page
 st.set_page_config(
     page_title="B-spline vs Akima Comparison",
-    page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -263,21 +262,19 @@ st.markdown(
 # Instructions
 st.markdown("""
 <div class="instructions-box">
-    <h3>📊 How to Use</h3>
+    <h3> How to Use</h3>
     <ol>
         <li><strong>Click on the plot:</strong> Add data points by clicking anywhere</li>
         <li><strong>Click existing points:</strong> Delete points by clicking near them</li>
-        <li><strong>Adjust parameters:</strong> Use the sidebar controls to modify B-spline behavior</li>
-        <li><strong>View diagnostics:</strong> Scroll down to see basis functions and spline segments</li>
     </ol>
 </div>
 """, unsafe_allow_html=True)
 
 # Sidebar controls
-st.sidebar.header("🎯 Controls")
+st.sidebar.header("Controls")
 
 # Data controls
-st.sidebar.subheader("📈 Sample Data")
+st.sidebar.subheader("Sample Data")
 col1, col2 = st.sidebar.columns(2)
 with col1:
     if st.button("Sine Wave"):
@@ -299,7 +296,7 @@ if st.sidebar.button("🗑️ Clear All Points"):
 st.sidebar.markdown("---")
 
 # B-spline parameters
-st.sidebar.subheader("🔧 B-spline Parameters")
+st.sidebar.subheader("B-spline Parameters")
 
 degree = st.sidebar.slider(
     "Spline Degree:",
@@ -322,7 +319,7 @@ smoothing = st.sidebar.slider(
 
 # Plot bounds controls
 st.sidebar.markdown("---")
-st.sidebar.subheader("📏 Plot Range")
+st.sidebar.subheader("Plot Range")
 with st.sidebar.expander("Adjust Plot Bounds"):
     xmin = st.number_input("X min:", value=0.0, step=1.0)
     xmax = st.number_input("X max:", value=10.0, step=1.0)
@@ -339,7 +336,7 @@ st.sidebar.markdown("---")
 
 # Display current point counts
 st.sidebar.markdown("**Current Points:**")
-st.sidebar.write(f"🔵 Data points: {len(st.session_state.data_points)}")
+st.sidebar.write(f"Data points: {len(st.session_state.data_points)}")
 
 # Main plot section
 st.subheader("Interactive Plot")
@@ -372,7 +369,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown("""
     <div class="method-box">
-        <h3>🔵 B-spline Basis Fitting</h3>
+        <h3>B-spline Basis Fitting</h3>
         <ul>
             <li><strong>Basis Functions:</strong> Linear combination of smooth basis functions</li>
             <li><strong>Knot Control:</strong> Knot placement directly affects curve shape</li>
@@ -386,7 +383,7 @@ with col1:
 with col2:
     st.markdown("""
     <div class="method-box">
-        <h3>🔴 Akima Spline Interpolation</h3>
+        <h3>Akima Spline Interpolation</h3>
         <ul>
             <li><strong>Piecewise Cubic:</strong> Different cubic polynomial per segment</li>
             <li><strong>Exact Interpolation:</strong> Always passes through data points</li>
@@ -400,7 +397,7 @@ with col2:
 
 # Diagnostic plots section
 st.markdown("---")
-st.header("🔬 Diagnostic Plots")
+st.header("Diagnostic Plots")
 
 if len(st.session_state.data_points) >= 2:
     col1, col2 = st.columns(2)
@@ -531,5 +528,5 @@ if len(st.session_state.data_points) >= 2:
     st.markdown("---")
 else:
     st.info(
-        "🎯 Add at least 2 data points to see diagnostic plots showing the underlying mathematical structure of both spline methods!")
+        "Add at least 2 data points to see diagnostic plots showing the underlying mathematical structure of both spline methods!")
 
